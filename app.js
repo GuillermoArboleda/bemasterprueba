@@ -15,10 +15,11 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(express.static('client/build'));
-    app.get("/", function (req, res) {
-    res.sendFile(path.resolve(__dirname , "client/build", "index.html"));
-     });
+app.use(express.static(__dirname + '/client/build'));
+
+app.post('/*', function(req, res){
+    res.sendFile(__dirname +  '/client/build/index.html');
+});
 
 //Conexion con base de datos
 mongoose.connect('mongodb+srv://root:123@cluster0.jwxt0.mongodb.net/?retryWrites=true&w=majority', {
