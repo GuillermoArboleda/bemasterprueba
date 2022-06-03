@@ -14,12 +14,13 @@ app.use(corse());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname, '/client/build')));
 
-// Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+
 
 //Conexion con base de datos
 mongoose.connect('mongodb+srv://root:123@cluster0.jwxt0.mongodb.net/?retryWrites=true&w=majority', {
