@@ -15,11 +15,13 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(express.static('client/build'));
-app.get("/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, '/client/build')));
 
+//--
+// Right before your app.listen(), add this:
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 //Conexion con base de datos
 mongoose.connect('mongodb+srv://root:123@cluster0.jwxt0.mongodb.net/?retryWrites=true&w=majority', {
@@ -34,7 +36,6 @@ app.use('/content', content);
 app.use('/category', category);
 app.use('/login', login);
 app.use('/contentUser', contentUser);
-
 
 //Iniciamos Server
 const port = process.env.PORT || 8080;
