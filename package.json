@@ -10,7 +10,7 @@
     "install-client": "cd client && npm install",
     "start": "node app.js",
     "client": "cd client && npm start",
-    "dev": "concurrently -n 'app,client' -c 'red,green'  \"nodemon app.js\" \"npm run client\""
+    "heroku-postbuild": "npm run install-client && npm run build"
   },
   "engines": {
     "node": "16.13.1",
