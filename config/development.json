@@ -1,0 +1,6 @@
+{
+    "configToken":{
+        "SEED": "secret",
+        "expiration": "1h"
+    }
+}
