@@ -9,6 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+// Right before your app.listen(), add this:
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, 'prueba_bemaster', 'build', 'index.html'));
+});
+
 //Conexion con base de datos
 mongoose.connect('mongodb+srv://root:123@cluster0.jwxt0.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
