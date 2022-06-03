@@ -15,11 +15,11 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(express.static(path.join(__dirname, "client/build")));
-  // Handle React routing, return all requests to React app
-  app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
+app.use(express.static('client/build'));
+// Handle React routing, return all requests to React app
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 
 
 //Conexion con base de datos
