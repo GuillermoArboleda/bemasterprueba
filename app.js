@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(express.static(path.join(__dirname, "client/build")));
   // Handle React routing, return all requests to React app
-  app.get("*", function (req, res) {
+  app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 
