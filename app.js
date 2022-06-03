@@ -6,6 +6,7 @@ const contentUser = require('./routes/contentUser');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const path = require('path');
 //middlewares
 const corse = require('cors');
 const bodyParser = require("body-parser");
