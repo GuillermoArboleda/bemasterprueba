@@ -6,8 +6,14 @@ const contentUser = require('./routes/contentUser');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+//middlewares
+const corse = require('cors');
+const bodyParser = require("body-parser");
+app.use(corse());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, '/client/build')));
 
 // Right before your app.listen(), add this:
 app.get("/", (req, res) => {
@@ -29,8 +35,8 @@ app.use('/login', login);
 app.use('/contentUser', contentUser);
 
 
-const port = process.env.PORT || 3000;
-
+//Iniciamos Server
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
-    console.log(`Escuchando desde puerto ${port}...`)
+    console.log(`BackEnd escuchando por puerto ${port}....`)
 })
