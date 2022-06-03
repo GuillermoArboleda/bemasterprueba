@@ -1,5 +1,5 @@
 {
-  "name": "prueba_bemaster",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "install-client": "cd prueba_bemaster && npm install",
     "heroku-postbuild": "npm run install-prueba_bemaster && npm run build",
     "start": "node app.js",
-    "client": "cd prueba_bemaster && npm start",
+    "prueba_bemaster": "cd prueba_bemaster && npm start",
     "dev": "concurrently -n 'app,prueba_bemaster' -c 'red,green'  \"nodemon app.js\" \"npm run prueba_bemaster\""
   },
   "engines": {
